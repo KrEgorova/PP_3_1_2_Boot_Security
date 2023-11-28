@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete user</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/admin/delete(id=${user.getId()})}" th:object="${user}">
+    <label for="id">ID:</label>
+    <input type="text" th:value="${user.getId()}" style="background-color:#A9A9A9" id="id" name="id"
+           readonly/>
+    <br>
+    <label for="name">Username:</label>
+    <input type="text" th:value="${user.getUsername()}" id="name" name="name" readonly/>
+    <br>
+    <label for="age">Age:</label>
+    <input type="text" th:value="${user.getAge()}" id="age" name="age" readonly/>
+    <br>
+    <label for="city">City:</label>
+    <input type="text" th:value="${user.getCity()}" id="city" name="city" readonly/>
+    <br>
+    <label for="city">Password:</label>
+    <input type="text" th:value="${user.password}" id="password" name="password" readonly/>
+    <br>
+    <label for="roles">Roles:</label>
+    <select th:field="*{roles}" th:value="${user.roles}" multiple id="roles" name="roles" size="2" disabled>
+        <option value="1">Admin</option>
+        <option value="2">User</option>
+    </select>
+    <br>
+    <br>
+    <input type="submit" value="Delete">
+</form>
+<br>
+<form name="logoutForm" th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit user</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/admin/edit}" th:object="${user}">
+    <label for="id">ID:</label>
+    <input type="text" th:value="${user.getId()}" style="background-color:#A9A9A9" id="id" name="id" readonly/>
+    <br>
+    <label for="username">Enter username:</label>
+    <input type="text" th:value="${user.getUsername()}" id="username" name="username"/>
+    <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}" style="color:#FF0000">Username error</div>
+    <br>
+    <label for="age">Enter age:</label>
+    <input type="text" th:value="${user.getAge()}" id="age" name="age"/>
+    <div th:if="${#fields.hasErrors('age')}" th:errors="*{age}" style="color:#FF0000">Age error</div>
+    <br>
+    <label for="city">Enter city:</label>
+    <input type="text" th:value="${user.getCity()}" id="city" name="city"/>
+    <div th:if="${#fields.hasErrors('city')}" th:errors="*{city}" style="color:#FF0000">City error</div>
+    <br>
+    <label for="password">Enter password:</label>
+    <input type="text" th:value="${user.password}" id="password" name="password"/>
+    <br>
+    <br>
+    <label for="roles">Enter roles:</label>
+    <select th:field="*{roles}" multiple id="roles" name="roles" size="2">
+        <option value="1">Admin</option>
+        <option value="2">User</option>
+    </select>
+    <br>
+    <br>
+    <input type="submit" value="Update">
+</form>
+<br>
+<form name="logoutForm" th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+</body>
+</html>
