@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         if (optional.isPresent()) {
             return optional.get();
         } else {
-            throw new RuntimeException("Пользователя с таким ID не существует!!!!!");
+            throw new EntityNotFoundException("Пользователя с таким ID не существует!!!!!");
         }
     }
 
